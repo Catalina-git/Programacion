@@ -1,3 +1,5 @@
+/* Implemente un codigo que pida al usuario dos numeros y una operacion (+, -, *, /) y realice la operacion correspondiente */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

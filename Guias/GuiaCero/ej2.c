@@ -1,3 +1,5 @@
+/* Implemente un codigo que imprima los numeros del 1 al 10 usando un bucle for */
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,3 +1,5 @@
+/* Implemente un codigo que pida al usuario un numero y calcule su factorial utilizando un bucle for/while */
+
 #include <stdio.h>
 #include <stdlib.h>
 

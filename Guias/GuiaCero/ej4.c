@@ -1,3 +1,5 @@
+/* Implemente un codigo que pida al usuario un numero del 1 al 7 y muestre el dia de la semana correspondiente */
+
 #include <stdio.h>
 #include <stdlib.h>
 

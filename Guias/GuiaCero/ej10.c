@@ -1,3 +1,5 @@
+/* Implemente un codigo que lea e imprima en pantala, todos los datos contenidos en el archivo "nombres.bin" */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

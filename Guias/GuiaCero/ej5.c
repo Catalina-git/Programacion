@@ -1,3 +1,5 @@
+/* Implemente un codigo que declare un vector de 5 enteros, pida al usuario que ingrese los valores y luego los imprima */
+
 #include <stdio.h>
 #include <stdlib.h>
 

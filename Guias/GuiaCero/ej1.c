@@ -1,3 +1,5 @@
+/* Implemente un codigo que pida al usuario un numero y determine si es par o impar */
+
 #include <stdio.h>
 #include <stdlib.h>
 

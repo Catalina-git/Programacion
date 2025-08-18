@@ -1,3 +1,5 @@
+/* Implemente un codigo que pida al usuario una frase y cuente cuantas vocales hay en la frase */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

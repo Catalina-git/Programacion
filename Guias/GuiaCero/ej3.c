@@ -1,3 +1,8 @@
+/* Implemente un codigo que pida numeros hasta que el usuario ingrese 0
+    a. Calcule la suma de los numeros ingresados
+    b. Devuelva el numero mas grande 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
