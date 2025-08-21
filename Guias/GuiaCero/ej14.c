@@ -15,9 +15,10 @@ int main() {
         int opcion;
         char nombre[100], password[100];
         char nombreIngresado[100], passwordIngresada[100]; /* Son las variables que voy a usar para que el usuario pueda iniciar sesion */
+        char nuevoNombre[100];
         int encontrado = 0;
 
-        archivo = fopen("credenciales.bin", "a+");
+        archivo = fopen("credenciales.bin", "r+b"); /* Abrir el archivo en modo lectura y escritura binaria */
         if (archivo == NULL) {
                 perror("Error al abrir el archivo");
                 return 1;
@@ -93,7 +94,40 @@ int main() {
 
                                 break;
                         case 3: 
+                        /* Tengo que buscar el nombre de usuario que se desea cambiar --> pido al usuario el nombre que quiere cambiar
+                           Despues busco ese nombre en el archivo, si encuentro uno que coincida lo guardo en una variable temporal, y la modifico por el nuevo nombre*/
                                 rewind(archivo); /* Mover el puntero al inicio del archivo */
+                                encontrado = 0;
+
+                                printf("\nIngrese el nombre de usuario que desea cambiar: ");
+                                scanf("%s", nombreIngresado);
+
+                                while (fgets(nombre, sizeof(nombre), archivo)) {
+                                /* Primero se ejecuta el fgets(nombre...), si eso es verdadero (se cumple), se va a ejecutar el fgets(password...) 
+                                   ---> el fgets lee el input del usuario, lo uso para guardar lo que el usuario ingresa*/
+                                        nombre[strcspn(nombre, "\n")] = 0;
+                                        /* Si el nombre ingresado por el usuario coincide con el nombre guardado en el archivo, lo reemplazo */
+                                        /* strcmp() compara dos cadenas de caracteres y devuelve 0 si son iguales */
+
+                                        if (strcmp(nombre, nombreIngresado) == 0) {
+                                                encontrado = 1;
+                                                /* Le pido al usuario que ingrese el nuevo nombre de usuario y lo guardo en 'nombre' para reemplazar el existente*/
+                                                printf("Ingrese el nuevo nombre de usuario: ");
+                                                scanf("%s", nuevoNombre);
+
+                                                fseek(archivo, -strlen(nombre) - 1, SEEK_CUR); /* Mover el puntero al inicio del nombre encontrado, para poder reemplazarlo */
+                                                fwrite(nuevoNombre, sizeof(char), strlen(nuevoNombre), archivo); /* Reemplazar el nombre en el archivo */
+                                                fflush(archivo); /* Asegurar que los cambios se guarden en el archivo */
+                                        }
+                                }
+                                
+                                if (!encontrado) {
+                                        printf("\nNombre de usuario no encontrado. Intente de nuevo.\n");
+                                        break;
+                                } else {
+                                        printf("\nNombre de usuario cambiado exitosamente!\n");
+                                }
+
                                 break;
 
                         case 4: 
