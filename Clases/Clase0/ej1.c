@@ -50,7 +50,7 @@ int main () {
             case 1:
                 printf("\nIngrese el nombre del empleado: ");
                 fgets(empleado, sizeof(empleado), stdin); /*fgets lo uso para guardar lo que el usuario escribio. Lee el input del usuario, parecido al scanf*/
-                empleado[strcspn(empleado, "\n")] = 0; /*Esto es para no guardaar el \n*/
+                empleado[strcspn(empleado, "\n")] = '\0'; /*Esto es para no guardaar el \n*/
 
                 fseek(file, 0, SEEK_END); /* Mover el puntero al final del archivo */
                 fwrite(&empleado, sizeof(empleado), 1, file);
