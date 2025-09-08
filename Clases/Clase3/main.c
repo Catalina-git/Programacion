@@ -20,19 +20,18 @@ int main() {
    #endif /* ej1 */
 
    #ifdef ej2
-   
-   comparacion(10, 1000);
+
+   int start, stop;
+
+   printf("\nComienzo del intervalo: ");
+   scanf("%d", &start);
+
+   printf("\nFin del intervalo: ");
+   scanf("%d", &stop);
+
+   comparacion(start, stop);
 
    #endif /* ej2 */
-
-
-
-
-
-
-
-
-
 
    return 0;
 }

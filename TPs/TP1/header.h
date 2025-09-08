@@ -1,0 +1,64 @@
+#ifndef header
+#define header
+
+#define ej1
+#define ej2
+#define ej3
+#define ej4
+
+/* Structs utilizadas a lo largo del TP */
+typedef struct {
+    int id;
+    float temperatura;
+    float presion;
+    float humedad;
+} sensorData;
+
+typedef struct {
+    float x;
+    float y;
+} vector;
+
+struct DatosPersonales {
+    char nombre[30];
+    int edad;
+    char sexo;
+};
+
+struct Lectura {
+    float frecuenciaCardiaca;
+    float temperatura;
+    float presion;
+};
+
+struct Paciente {
+    int edad;
+    struct DatosPersonales datos;
+    struct Lectura ultimaLectura;
+};
+
+/*Estructura para representar las horas (incluye hora, minutos y segundos)*/
+typedef struct {
+    int horas;
+    int minutos;
+    int segundos;
+} Hora;
+
+
+/* ------------------------- FUNCIONES -------------------------  */
+
+/* ----------------- EJERCICIO 1 */
+void mostrar_lectura(uint16_t dato);
+
+/* ----------------- EJERCICIO 2 ----------------- */
+void  cargar_sensor(sensorData arr[], int n);
+void mostrar_promedios(sensorData arr[], int n);
+
+/* ----------------- EJERCICIO 3 ----------------- */
+vector suma_vectores(vector v1, vector v2);
+float modulo_vector(vector v);
+
+/* ----------------- EJERCICIO 4 ----------------- */
+Hora diferenciaHoras(Hora h1, Hora h2);
+
+#endif /* Es el endif del header */
