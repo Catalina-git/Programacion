@@ -1,0 +1,12 @@
+- FUNCIONES: instrucciones basicas fuera del codigo, me facilitan la lectura del codigo, sirve para reutilizarlas
+
+- HEADERS: archivo de funciones, me facilita el codigo de implementacion.
+
+--> ambos son para tener el archivo mas modularizado 
+
+#ifndef --> si no estan definidas
+#define --> definilas
+#endif --> y terminarlo
+
+- scanf se usa para numeros --> argumentos: que leer y donde guardarlo
+- fgets se usa para cualquier otra cosa
