@@ -34,7 +34,7 @@ int main() {
 
     #endif /* ej3 */
 
-    #ifdef ej4
+    #ifndef ej4
 
     Hora h1 = {14, 30, 15}; /* 14 horas, 30 minutos, 15 segundos */
     Hora h2 = {30, 20, 3}; /* 15 horas, 20 minutos, 3 segundos */
@@ -43,7 +43,20 @@ int main() {
     
     #endif /* ej4 */
 
+    #ifndef ej5
+    
 
+    
+        
+
+    
+    #endif /* ej5 */
+
+    #ifdef ej6
+
+    mensaje();
+    
+    #endif /* ej6 */
 
    return 0; 
 }

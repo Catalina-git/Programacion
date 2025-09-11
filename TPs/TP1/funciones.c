@@ -88,3 +88,77 @@ Hora diferenciaHoras(Hora h1, Hora h2) {
         printf("\nDiferencia entre ambos timestamps: %d:%d:%d\n\n", diferencia.horas, diferencia.minutos, diferencia.segundos);
     }
 }
+
+/* void guardarPaciente(Paciente id, ){
+    char nombre[30], sexo;
+    int edad, id;
+    FILE *archivo;
+
+    archivo = fopen("pacientes.dat", "r+b"); /* Abro el archivo en modo lectura y escritura */
+    /*if (archivo == NULL) {
+        perror("Error al abrir el archivo");
+        return 1;
+    }
+
+    printf("Ingrese el nombre del paciente: ");
+    fgets(nombre, sizeof(nombre), stdin);
+    nombre[strcspn(nombre, "\n")] = 0; /* Elimina el salto de linea */
+    /*fprintf(archivo, "%s\n", nombre); /* Guardar el nombre en el archivo */
+
+    /*printf("Ingrese su edad: ");
+    scanf("%d", &edad);
+    fprintf(archivo, "%s\n", edad); /* Guarda la edad en el archivo */
+
+   /*printf("Ingrese el sexo: ");
+    fgets(sexo, sizeof(sexo), stdin);
+    sexo[strcspn(sexo, "\n")] = 0; /* Elimina el salto de linea */
+    /*fprintf(archivo, "%s\n", sexo); /* Guardar el nombre en el archivo */
+
+    /*printf("Ingrese su ID: ");
+    scanf("%d", &id);
+    fprintf(archivo, "%s\n", id); /* Guarda el id en el archivo */
+
+void mensaje() {
+    Mensaje mensaje;
+    int opcion;
+
+    printf("Seleccione el tipo de mensaje:\n");
+    printf("1. Texto\n2. Lectura Sensor (ID)\n3. Lectura Sensor (valor leido)\n");
+    printf("Opcion: ");
+    scanf("%d", &opcion);
+    getchar(); /* Limpiar buffer */
+
+    switch (opcion) {
+        case 1:
+            mensaje.tipo = TEXTO; 
+            printf("Ingrese el mensaje de tipo texto: ");
+            fgets(mensaje.LecturaSensor.texto, sizeof(mensaje.LecturaSensor.texto), stdin);
+            mensaje.LecturaSensor.texto[strcspn(mensaje.LecturaSensor.texto, "\n")] = 0; /* Elimina el salto de linea */
+
+            printf("Mensaje recibido...\n");
+            printf("%s", mensaje.LecturaSensor.texto);
+
+            break;
+
+        case 2:
+            mensaje.tipo = SENSOR_ID; 
+            printf("Ingrese el ID del sensor: ");
+            scanf("%d", &mensaje.LecturaSensor.ID);
+
+            printf("Mensaje recibido...\n");
+            printf("%d", mensaje.LecturaSensor.ID);
+
+            break;
+
+        case 3: 
+            mensaje.tipo = SENSOR_LEIDO; 
+            printf("Ingrese el valor leido por el sensor: ");
+            scanf("%f", &mensaje.LecturaSensor.valorLeido);
+
+            printf("Mensaje recibido...\n");
+            printf("%f", mensaje.LecturaSensor.valorLeido);
+
+            break;
+
+    }
+}

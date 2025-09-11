@@ -5,8 +5,11 @@
 #define ej2
 #define ej3
 #define ej4
+#define ej5
+#define ej6
 
-/* Structs utilizadas a lo largo del TP */
+/* ------------------------- STRUCTS -------------------------  */
+/* ----------------- EJERCICIO 2 ----------------- */
 typedef struct {
     int id;
     float temperatura;
@@ -14,11 +17,21 @@ typedef struct {
     float humedad;
 } sensorData;
 
+/* ----------------- EJERCICIO 3 ----------------- */
 typedef struct {
     float x;
     float y;
 } vector;
 
+/* ----------------- EJERCICIO 4 ----------------- */
+/*Estructura para representar las horas (incluye hora, minutos y segundos)*/
+typedef struct {
+    int horas;
+    int minutos;
+    int segundos;
+} Hora;
+
+/* ----------------- EJERCICIO 5 ----------------- */
 struct DatosPersonales {
     char nombre[30];
     int edad;
@@ -37,17 +50,29 @@ struct Paciente {
     struct Lectura ultimaLectura;
 };
 
-/*Estructura para representar las horas (incluye hora, minutos y segundos)*/
+/* ----------------- EJERCICIO 6 ----------------- */
+typedef enum {
+    TEXTO, 
+    SENSOR_ID,
+    SENSOR_LEIDO
+} TipoMensaje;
+
 typedef struct {
-    int horas;
-    int minutos;
-    int segundos;
-} Hora;
+    TipoMensaje tipo;
+
+    union LecturaSensor {
+        char texto[50];
+        int ID;
+        float valorLeido;
+        
+    } LecturaSensor;
+    
+} Mensaje;
 
 
 /* ------------------------- FUNCIONES -------------------------  */
 
-/* ----------------- EJERCICIO 1 */
+/* ----------------- EJERCICIO 1 ----------------- */
 void mostrar_lectura(uint16_t dato);
 
 /* ----------------- EJERCICIO 2 ----------------- */
@@ -60,5 +85,10 @@ float modulo_vector(vector v);
 
 /* ----------------- EJERCICIO 4 ----------------- */
 Hora diferenciaHoras(Hora h1, Hora h2);
+
+/* ----------------- EJERCICIO 5 ----------------- */
+
+/* ----------------- EJERCICIO 6 ----------------- */
+void mensaje();
 
 #endif /* Es el endif del header */
