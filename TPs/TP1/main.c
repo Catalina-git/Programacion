@@ -43,16 +43,13 @@ int main() {
     
     #endif /* ej4 */
 
-    #ifndef ej5
+    #ifdef ej5
     
-
-    
+    guardarPaciente();
         
-
-    
     #endif /* ej5 */
 
-    #ifdef ej6
+    #ifndef ej6
 
     mensaje();
     

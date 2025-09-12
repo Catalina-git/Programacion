@@ -89,34 +89,61 @@ Hora diferenciaHoras(Hora h1, Hora h2) {
     }
 }
 
-/* void guardarPaciente(Paciente id, ){
-    char nombre[30], sexo;
-    int edad, id;
+void guardarPaciente() {
     FILE *archivo;
+    struct Paciente paciente;
 
-    archivo = fopen("pacientes.dat", "r+b"); /* Abro el archivo en modo lectura y escritura */
-    /*if (archivo == NULL) {
+    printf("Función llamada correctamente.\n");
+
+    archivo = fopen("pacientes.dat", "ab"); /* Abro el archivi en modo ab para que cada vez que se llame a la funcion me cree un nuevo datos_t y no me sobreescriba */
+    if (archivo == NULL) {
         perror("Error al abrir el archivo");
-        return 1;
+        return;
     }
 
+    printf("Ingrese su ID: ");
+    scanf("%d", &paciente.id);
+    getchar();
+    fprintf(archivo, "%d\n", paciente.id); /* Guarda el id en el archivo */
+
     printf("Ingrese el nombre del paciente: ");
-    fgets(nombre, sizeof(nombre), stdin);
-    nombre[strcspn(nombre, "\n")] = 0; /* Elimina el salto de linea */
-    /*fprintf(archivo, "%s\n", nombre); /* Guardar el nombre en el archivo */
+    fgets(paciente.datos.nombre, sizeof(paciente.datos.nombre), stdin);
+    paciente.datos.nombre[strcspn(paciente.datos.nombre, "\n")] = 0; /* Elimina el salto de linea */
+    fprintf(archivo, "%s\n", paciente.datos.nombre); /* Guardar el nombre en el archivo */
 
-    /*printf("Ingrese su edad: ");
-    scanf("%d", &edad);
-    fprintf(archivo, "%s\n", edad); /* Guarda la edad en el archivo */
+    printf("Ingrese su edad: ");
+    scanf("%d", &paciente.datos.edad);
+    getchar();
+    fprintf(archivo, "%d\n", paciente.datos.edad); /* Guarda la edad en el archivo */
 
-   /*printf("Ingrese el sexo: ");
-    fgets(sexo, sizeof(sexo), stdin);
-    sexo[strcspn(sexo, "\n")] = 0; /* Elimina el salto de linea */
-    /*fprintf(archivo, "%s\n", sexo); /* Guardar el nombre en el archivo */
+    printf("Ingrese el sexo (M para masculino, F para femenino): ");
+    scanf("%c", &paciente.datos.sexo);
+    getchar();
+    fprintf(archivo, "%c\n", paciente.datos.sexo); /* Guardar el nombre en el archivo */
+    /* No necesitas strcspn para un int, simplemente usa scanf y limpia el buffer si es necesario */
+    
+    printf("Ingrese el frecuencia cardiaca del paciente: ");
+    scanf("%f", &paciente.ultimaLectura.frecuenciaCardiaca);
+    getchar();
+    fprintf(archivo, "%f\n", paciente.ultimaLectura.frecuenciaCardiaca); /* Guardar el nombre en el archivo */
 
-    /*printf("Ingrese su ID: ");
-    scanf("%d", &id);
-    fprintf(archivo, "%s\n", id); /* Guarda el id en el archivo */
+    printf("Ingrese su temperatura: ");
+    scanf("%f", &paciente.ultimaLectura.temperatura);
+    getchar();
+    fprintf(archivo, "%f\n", paciente.ultimaLectura.temperatura); /* Guarda la edad en el archivo */
+
+    printf("Ingrese su presion: ");
+    scanf("%f", &paciente.ultimaLectura.presion);
+    getchar();
+    fprintf(archivo, "%f\n", paciente.ultimaLectura.presion); /* Guardar el nombre en el archivo */
+    /* No necesitas strcspn para un int, simplemente usa scanf y limpia el buffer si es necesario */
+
+    fwrite(&paciente, sizeof(struct Paciente), 1, archivo);
+    fclose(archivo);
+
+}
+
+
 
 void mensaje() {
     Mensaje mensaje;

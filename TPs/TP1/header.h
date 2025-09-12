@@ -45,7 +45,7 @@ struct Lectura {
 };
 
 struct Paciente {
-    int edad;
+    int id;
     struct DatosPersonales datos;
     struct Lectura ultimaLectura;
 };
@@ -87,6 +87,7 @@ float modulo_vector(vector v);
 Hora diferenciaHoras(Hora h1, Hora h2);
 
 /* ----------------- EJERCICIO 5 ----------------- */
+void guardarPaciente();
 
 /* ----------------- EJERCICIO 6 ----------------- */
 void mensaje();
