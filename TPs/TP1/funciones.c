@@ -197,7 +197,7 @@ void promedios(const char *nombreArchivo) {
 
     int contador = 0; 
     int suma_edad = 0, suma_frec = 0, suma_temp = 0, suma_presion = 0;
-    float promedio_edad, promedio_frec, promedio_temp, promedio_presion;
+    float promedio_edad = 0.0, promedio_frec = 0.0, promedio_temp = 0.0, promedio_presion = 0.0;
 
     while (fread(&pacientes, sizeof(struct Paciente), 1, archivo) == 1) {
         suma_edad = pacientes.datos.edad;
