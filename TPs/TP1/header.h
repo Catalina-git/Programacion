@@ -50,6 +50,13 @@ struct Paciente {
     struct Lectura ultimaLectura;
 };
 
+/* struct para la segunda manera de resolver el ejercicio (es este + los de lectura y datos)*/
+/* typedef struct {
+    int id;
+    struct DatosPersonales datos;
+    struct Lectura ultimaLectura;
+} paciente_t; */
+
 /* ----------------- EJERCICIO 6 ----------------- */
 typedef enum {
     TEXTO, 
@@ -88,6 +95,8 @@ Hora diferenciaHoras(Hora h1, Hora h2);
 
 /* ----------------- EJERCICIO 5 ----------------- */
 void guardarPaciente();
+/*void savePaciente(paciente_t paciente); --> es la otra manera de hacer la funcion */
+void promedios(const char *archivo);
 
 /* ----------------- EJERCICIO 6 ----------------- */
 void mensaje();

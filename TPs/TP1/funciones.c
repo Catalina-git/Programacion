@@ -93,8 +93,6 @@ void guardarPaciente() {
     FILE *archivo;
     struct Paciente paciente;
 
-    printf("Función llamada correctamente.\n");
-
     archivo = fopen("pacientes.dat", "ab"); /* Abro el archivi en modo ab para que cada vez que se llame a la funcion me cree un nuevo datos_t y no me sobreescriba */
     if (archivo == NULL) {
         perror("Error al abrir el archivo");
@@ -138,12 +136,91 @@ void guardarPaciente() {
     fprintf(archivo, "%f\n", paciente.ultimaLectura.presion); /* Guardar el nombre en el archivo */
     /* No necesitas strcspn para un int, simplemente usa scanf y limpia el buffer si es necesario */
 
+    printf("\nDatos guardados correctamente en el archivo 'pacientes.dat'.\n");
+
     fwrite(&paciente, sizeof(struct Paciente), 1, archivo);
     fclose(archivo);
-
 }
 
+/* OTRA MANERA DE HACER LA FUNCION PARA GUARDAR LOS DATOS DE LOS PACIENTES*/
+/* void savePaciente(paciente_t paciente) {
+    FILE *archivo;
 
+    archivo = fopen("pacientes.dat", "ab"); /* Abro el archivi en modo ab para que cada vez que se llame a la funcion me cree un nuevo datos_t y no me sobreescriba */
+    /* if (archivo == NULL) {
+        perror("Error al abrir el archivo");
+        return;
+    }
+
+    printf("\nDatos de los paciente...\n");
+
+    printf("ID: %d\n", paciente.id);
+    fprintf(archivo, "%d\n", paciente.id);
+
+    printf("\nNombre: %s\n", paciente.datos.nombre);
+    fprintf(archivo, "%s\n", paciente.datos.nombre);
+
+    printf("Edad: %d\n", paciente.datos.edad);
+    fprintf(archivo, "%d\n", paciente.datos.edad);
+
+    printf("Sexo del paciente (M para masculino, F para femenino): %c\n", paciente.datos.sexo);
+    fprintf(archivo, "%c\n", paciente.datos.sexo);
+
+    printf("Frecuencia cardiaca del paciente: %f\n", paciente.ultimaLectura.frecuenciaCardiaca);
+    fprintf(archivo, "%f\n", paciente.ultimaLectura.frecuenciaCardiaca); /* Guardar el nombre en el archivo */
+
+    /* printf("Temperatura del paciente: %f\n", paciente.ultimaLectura.temperatura);
+    fprintf(archivo, "%f\n", paciente.ultimaLectura.temperatura); /* Guarda la edad en el archivo */
+
+    /* printf("Presion del paciente: %f", paciente.ultimaLectura.presion);
+    fprintf(archivo, "%f\n", paciente.ultimaLectura.presion); /* Guardar el nombre en el archivo */
+    /* No necesitas strcspn para un int, simplemente usa scanf y limpia el buffer si es necesario */
+
+    /*printf("\nDatos guardados correctamente en el archivo 'pacientes.dat'.\n");
+
+    fwrite(&paciente, sizeof(paciente_t), 1, archivo);
+    fclose(archivo);
+
+}*/
+
+void promedios(const char *nombreArchivo) {
+    FILE *archivo;
+    struct Paciente pacientes;
+
+    archivo = fopen(nombreArchivo, "rb"); /* Abro el archivi en modo ab para que cada vez que se llame a la funcion me cree un nuevo datos_t y no me sobreescriba */
+    if (archivo == NULL) {
+        perror("Error al abrir el archivo");
+        return;
+    }
+
+    rewind(archivo);
+
+    int contador = 0; 
+    int suma_edad = 0, suma_frec = 0, suma_temp = 0, suma_presion = 0;
+    float promedio_edad, promedio_frec, promedio_temp, promedio_presion;
+
+    while (fread(&pacientes, sizeof(struct Paciente), 1, archivo) == 1) {
+        suma_edad = pacientes.datos.edad;
+        suma_frec = pacientes.ultimaLectura.frecuenciaCardiaca;
+        suma_temp = pacientes.ultimaLectura.temperatura;
+        suma_presion = pacientes.ultimaLectura.presion;
+        contador++;
+    }
+
+    fclose(archivo);
+    
+    promedio_edad = suma_edad / contador;
+    promedio_frec = suma_frec / contador;
+    promedio_temp = suma_temp / contador;
+    promedio_presion = suma_presion / contador;
+
+    printf("\n");
+
+    printf("\nPromedio de las edades: %.3f", promedio_edad);
+    printf("\nPromedio de las frecuencias cardiacas: %.3f", promedio_frec);
+    printf("\nPromedio de las temperaturas: %.3f", promedio_temp);
+    printf("\nPromedio de las presiones: %.3f", promedio_presion);
+}
 
 void mensaje() {
     Mensaje mensaje;
