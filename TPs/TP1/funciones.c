@@ -143,45 +143,45 @@ void guardarPaciente() {
 }
 
 /* OTRA MANERA DE HACER LA FUNCION PARA GUARDAR LOS DATOS DE LOS PACIENTES*/
-/* void savePaciente(paciente_t paciente) {
-    FILE *archivo;
+// void savePaciente(paciente_t paciente) {
+//     FILE *archivo;
 
-    archivo = fopen("pacientes.dat", "ab"); /* Abro el archivi en modo ab para que cada vez que se llame a la funcion me cree un nuevo datos_t y no me sobreescriba */
-    /* if (archivo == NULL) {
-        perror("Error al abrir el archivo");
-        return;
-    }
+//     archivo = fopen("pacientes.dat", "ab"); /* Abro el archivi en modo ab para que cada vez que se llame a la funcion me cree un nuevo datos_t y no me sobreescriba */
+//     if (archivo == NULL) {
+//         perror("Error al abrir el archivo");
+//         return;
+//     }
 
-    printf("\nDatos de los paciente...\n");
+//     printf("\nDatos de los paciente...\n");
 
-    printf("ID: %d\n", paciente.id);
-    fprintf(archivo, "%d\n", paciente.id);
+//     printf("ID: %d\n", paciente.id);
+//     fprintf(archivo, "%d\n", paciente.id);
 
-    printf("\nNombre: %s\n", paciente.datos.nombre);
-    fprintf(archivo, "%s\n", paciente.datos.nombre);
+//     printf("\nNombre: %s\n", paciente.datos.nombre);
+//     fprintf(archivo, "%s\n", paciente.datos.nombre);
 
-    printf("Edad: %d\n", paciente.datos.edad);
-    fprintf(archivo, "%d\n", paciente.datos.edad);
+//     printf("Edad: %d\n", paciente.datos.edad);
+//     fprintf(archivo, "%d\n", paciente.datos.edad);
 
-    printf("Sexo del paciente (M para masculino, F para femenino): %c\n", paciente.datos.sexo);
-    fprintf(archivo, "%c\n", paciente.datos.sexo);
+//     printf("Sexo del paciente (M para masculino, F para femenino): %c\n", paciente.datos.sexo);
+//     fprintf(archivo, "%c\n", paciente.datos.sexo);
 
-    printf("Frecuencia cardiaca del paciente: %f\n", paciente.ultimaLectura.frecuenciaCardiaca);
-    fprintf(archivo, "%f\n", paciente.ultimaLectura.frecuenciaCardiaca); /* Guardar el nombre en el archivo */
+//     printf("Frecuencia cardiaca del paciente: %f\n", paciente.ultimaLectura.frecuenciaCardiaca);
+//     fprintf(archivo, "%f\n", paciente.ultimaLectura.frecuenciaCardiaca); /* Guardar el nombre en el archivo */
 
-    /* printf("Temperatura del paciente: %f\n", paciente.ultimaLectura.temperatura);
-    fprintf(archivo, "%f\n", paciente.ultimaLectura.temperatura); /* Guarda la edad en el archivo */
+//     printf("Temperatura del paciente: %f\n", paciente.ultimaLectura.temperatura);
+//     fprintf(archivo, "%f\n", paciente.ultimaLectura.temperatura); /* Guarda la edad en el archivo */
 
-    /* printf("Presion del paciente: %f", paciente.ultimaLectura.presion);
-    fprintf(archivo, "%f\n", paciente.ultimaLectura.presion); /* Guardar el nombre en el archivo */
-    /* No necesitas strcspn para un int, simplemente usa scanf y limpia el buffer si es necesario */
+//     printf("Presion del paciente: %f", paciente.ultimaLectura.presion);
+//     fprintf(archivo, "%f\n", paciente.ultimaLectura.presion); /* Guardar el nombre en el archivo */
+//     /* No necesitas strcspn para un int, simplemente usa scanf y limpia el buffer si es necesario */
 
-    /*printf("\nDatos guardados correctamente en el archivo 'pacientes.dat'.\n");
+//     printf("\nDatos guardados correctamente en el archivo 'pacientes.dat'.\n");
 
-    fwrite(&paciente, sizeof(paciente_t), 1, archivo);
-    fclose(archivo);
+//     fwrite(&paciente, sizeof(paciente_t), 1, archivo);
+//     fclose(archivo);
 
-}*/
+// }
 
 void promedios(const char *nombreArchivo) {
     FILE *archivo;
@@ -200,19 +200,19 @@ void promedios(const char *nombreArchivo) {
     float promedio_edad = 0.0, promedio_frec = 0.0, promedio_temp = 0.0, promedio_presion = 0.0;
 
     while (fread(&pacientes, sizeof(struct Paciente), 1, archivo) == 1) {
-        suma_edad = pacientes.datos.edad;
-        suma_frec = pacientes.ultimaLectura.frecuenciaCardiaca;
-        suma_temp = pacientes.ultimaLectura.temperatura;
-        suma_presion = pacientes.ultimaLectura.presion;
+        suma_edad += pacientes.datos.edad;
+        suma_frec += pacientes.ultimaLectura.frecuenciaCardiaca;
+        suma_temp += pacientes.ultimaLectura.temperatura;
+        suma_presion += pacientes.ultimaLectura.presion;
         contador++;
     }
 
     fclose(archivo);
     
-    promedio_edad = suma_edad / contador;
-    promedio_frec = suma_frec / contador;
-    promedio_temp = suma_temp / contador;
-    promedio_presion = suma_presion / contador;
+    promedio_edad = (float)suma_edad / contador;
+    promedio_frec = (float)suma_frec / contador;
+    promedio_temp = (float)suma_temp / contador;
+    promedio_presion = (float)suma_presion / contador;
 
     printf("\n");
 

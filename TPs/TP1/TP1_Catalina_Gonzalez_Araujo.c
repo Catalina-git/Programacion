@@ -47,30 +47,30 @@ int main() {
     
     guardarPaciente();
 
-    /* Inicializo los structs */
-    /* paciente_t paciente1 = {
-        .id = 32,
-        .datos.nombre = "Joaquin",
-        .datos.edad = 24,
-        .datos.sexo = 'M',
-        .ultimaLectura.frecuenciaCardiaca = 70,
-        .ultimaLectura.temperatura = 36,
-        .ultimaLectura.presion = 120
-    };
+    // /* Inicializo los structs */
+    // paciente_t paciente1 = {
+    //     .id = 32,
+    //     .datos.nombre = "Joaquin",
+    //     .datos.edad = 24,
+    //     .datos.sexo = 'M',
+    //     .ultimaLectura.frecuenciaCardiaca = 70,
+    //     .ultimaLectura.temperatura = 36,
+    //     .ultimaLectura.presion = 120
+    // };
 
-    paciente_t paciente2 = {
-        .id = 33,
-        .datos.nombre = "Catalina",
-        .datos.edad = 22,
-        .datos.sexo = 'F',
-        .ultimaLectura.frecuenciaCardiaca = 70,
-        .ultimaLectura.temperatura = 36.5,
-        .ultimaLectura.presion = 120
-    };
+    // paciente_t paciente2 = {
+    //     .id = 33,
+    //     .datos.nombre = "Catalina",
+    //     .datos.edad = 22,
+    //     .datos.sexo = 'F',
+    //     .ultimaLectura.frecuenciaCardiaca = 70,
+    //     .ultimaLectura.temperatura = 36.5,
+    //     .ultimaLectura.presion = 120
+    // };
        
-    /* Llamo a la funcion 'savePaciente' para guardar los datos en el archivo 'pacientes.dat'*/
-    /* savePaciente(paciente1);
-    savePaciente(paciente2); */
+    // /* Llamo a la funcion 'savePaciente' para guardar los datos en el archivo 'pacientes.dat'*/
+    // savePaciente(paciente1);
+    // savePaciente(paciente2); 
 
     promedios("pacientes.dat");
 
