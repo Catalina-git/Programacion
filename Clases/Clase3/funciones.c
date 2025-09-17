@@ -27,7 +27,7 @@ void comparacion(int start, int end) { /* Le paso un intervalo, y que me analice
         while (aux > 0) {
             /*printf("%d\n", numero % 10); -->  8     5   4   2 */
             aux /= 10;                   /* 245   24   2   0 */
-            /* Es lo mismo que hacer num = num / 10*/
+            /* Es lo mismo que hacer num = num / 10 */
             cantidad_digitos++;
         }
 

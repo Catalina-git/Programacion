@@ -21,7 +21,7 @@ int main() {
 
    #ifdef ej2
 
-   int start, stop;
+   int start = 0, stop = 1000;
 
    printf("\nComienzo del intervalo: ");
    scanf("%d", &start);
