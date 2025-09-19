@@ -92,12 +92,12 @@ void mostrarVector(int *vector, int longitud){
 }
 
 /* ITEM d */
-int contadorUnos(int numero) {
-    uintptr_t temporal = numero;
+int contadorUnos(int* numero) {
+    int temporal = (uintptr_t)numero;
     int cantidadUnos = 0; 
 
     for (int i = 0; i < 31; i++) {
-        uintptr_t aux = (temporal>>i) & 1;
+        int aux = (temporal>>i) & 1;
         if (aux == 1) {
             cantidadUnos++;            
         }
@@ -138,7 +138,7 @@ int main(void) {
     printf("\n\n---------------- Punto d) ----------------\n");
 
     for (int i = 0; i < largo; i++) {
-        int unos = contadorUnos(lista[i]);
+        int unos = contadorUnos(&lista[i]);
         if (unos % 2 == 0) {
             lista[i] = lista[i] * 5;
         } else {
